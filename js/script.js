@@ -16,11 +16,16 @@
     iconSize: [46, 56],
   });
 
-  async function getSearchData(searchValue = '') {
+  getSearchData();
+  async function getSearchData(searchValue) {
+    let url = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a';
+
+    if (searchValue !== undefined) {
+      url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a&ipAddress=${searchValue}&domain=${searchValue}`;
+    }
+
     try {
-      const response = await fetch(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a&ipAddress=${searchValue}&domain=${searchValue}`
-      );
+      const response = await fetch(url);
       const data = await response.json();
 
       form.classList.remove('invalid');
@@ -60,11 +65,10 @@
     const searchValue = formInput.value;
 
     if (searchValue.trim().length === 0) {
-      form.classList.add('empty');
-      return;
+      return form.classList.add('empty');
     }
-    form.classList.remove('empty');
 
+    form.classList.remove('empty');
     getSearchData(searchValue);
   });
 
@@ -74,8 +78,7 @@
     if (informationsContainer.classList.contains('hide')) {
       return (infosButton.title = 'show informations');
     }
+
     infosButton.title = 'hide informations';
   });
-
-  // getSearchData();
 })();
