@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*******************************************/
+/* Variables */
+:root {
+  --very-dark-gray: hsl(0, 0%, 17%);
+  --dark-gray: hsl(0, 0%, 59%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --font-rubik: 'Rubik', sans-serif;
+  --width-mobile: 100%;
+  --bg-size: 300px;
+  --transition: 200ms;
+}
+
+/*******************************************/
+/* General Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-rubik);
+  padding-inline: 1.5rem;
+}
+
+/* Flex center center */
+#main,
+#form,
+#form::after,
+#form__button,
+#informations,
+#btn-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*******************************************/
+/* Main Container */
+#main {
+  width: 100%;
+  flex-direction: column;
+  padding-top: 2rem;
+  position: relative;
+}
+
+#background {
+  width: calc(100% + 3rem);
+  height: var(--bg-size);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../images/pattern-bg.png') center / cover no-repeat;
+  margin-inline: -1.5rem;
+  z-index: -1;
+}
+
+#main > h1 {
+  font-size: clamp(1.563rem, 4vw, 1.938rem);
+  font-weight: 500;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: clamp(2.125rem, 6vw, 2rem);
+}
+
+/* Form Container */
+#form {
+  width: min(var(--width-mobile), 555px);
+  height: 58px;
+  background-color: var(--white);
+  border-radius: 1rem;
+  margin-bottom: clamp(1.5rem, 6vw, 2.75rem);
+  position: relative;
+}
+
+#form::after {
+  content: 'Please enter an IP or domain';
+  width: 100%;
+  height: 35px;
+  align-items: flex-end;
+  position: absolute;
+  bottom: -23px;
+  border-radius: 0 0 1rem 1rem;
+  color: rgb(255, 100, 100);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.125rem;
+  z-index: -1;
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition) ease;
+}
+
+#form.empty::after {
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+#form.invalid::after {
+  content: 'This IP or domain is invalid';
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+#form__input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 1.125rem 1.5rem;
+}
+
+#form__input:focus-visible {
+  outline: none;
+}
+
+#form__button {
+  width: 58px;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  background-color: var(--black);
+  transition: background-color 200ms ease;
+}
+
+#form__button:hover,
+#form__button:focus-visible {
+  background-color: var(--very-dark-gray);
+  outline: none;
+}
+
+/* Informations Container */
+#informations {
+  width: min(var(--width-mobile), 1110px);
+  border-radius: 1rem;
+  z-index: 2;
+  position: relative;
+}
+
+#btn-infos {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  color: var(--black);
+  background-color: transparent;
+  padding: clamp(0.875rem, 4.5vw, 1rem);
+  z-index: 3;
+  transition: background-color var(--transition) ease, color var(--transition) ease;
+}
+
+#informations.hide #btn-infos {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+#informations.hide #btn-infos:hover {
+  background-color: var(--very-dark-gray);
+}
+
+.fa-solid {
+  transition: opacity var(--transition) ease;
+}
+
+.fa-eye {
+  position: absolute;
+  opacity: 0;
+}
+
+#informations.hide #btn-infos > .fa-eye-slash {
+  opacity: 0;
+}
+
+#informations.hide #btn-infos > .fa-eye {
+  opacity: 1;
+}
+
+/* Result Container */
+#result {
+  width: 100%;
+  height: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background-color: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.05);
+  padding: clamp(1.625rem, 6vw, 2.375rem) 1.25rem;
+  transition: transform var(--transition) ease;
+  transform-origin: 100% 10%;
+}
+
+#informations.hide #result {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: scale(0);
+}
+
+.section__title {
+  font-size: clamp(0.625rem, 2vw, 0.75rem);
+  font-weight: 700;
+  color: var(--dark-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  margin-bottom: 0.438rem;
+}
+
+.section__data {
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight: 500;
+}
+
+/* Map Container */
+#map {
+  width: calc(100% + 3rem);
+  min-height: calc(100vh - var(--bg-size));
+  top: var(--bg-size);
+  z-index: 0;
+}
+
+/*******************************************/
+/* Footer Container */
+footer {
+  width: 100%;
+  top: 100vh;
+  left: 0;
+  position: absolute;
+  padding: 0.5rem 1.5rem;
+}
+
+.attribution {
+  font-size: clamp(0.75rem, 3vw, 1rem);
+  text-align: center;
+  color: var(--very-dark-gray);
+}
+
+.attribution > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.attribution > a:hover,
+.attribution > a:focus-visible {
+  color: hsl(228, 61%, 59%);
+}
+
+.attribution > .fa-heart {
+  color: rgb(255, 80, 80);
+}
+
+/*******************************************/
+/* Media Queries */
+@media (min-width: 375px) {
+  footer {
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-size: 280px;
+  }
+
+  #result {
+    height: 162px;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+    padding-inline: 0;
+  }
+
+  .result-section {
+    padding-inline: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .divider {
+    position: relative;
+  }
+
+  .divider::before {
+    content: '';
+    width: 1px;
+    height: 72px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: var(--dark-gray);
+    opacity: 0.5;
+  }
+}

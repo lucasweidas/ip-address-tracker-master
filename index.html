@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main id="main">
+      <div id="background"></div>
+      <h1>IP Address Tracker</h1>
+      <form id="form">
+        <input type="text" id="form__input" placeholder="Search for any IP address or domain" />
+        <button id="form__button" title="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" /></svg>
+        </button>
+      </form>
+      <div id="informations">
+        <button id="btn-infos" title="hide informations">
+          <i class="fa-solid fa-eye"></i>
+          <i class="fa-solid fa-eye-slash"></i>
+        </button>
+        <div id="result">
+          <section id="section-ip" class="result-section">
+            <h2 class="section__title">IP Address</h2>
+            <p class="section__data" data-ip-address>192.212.174.101</p>
+          </section>
+          <section id="section-location" class="result-section divider">
+            <h2 class="section__title">Location</h2>
+            <p class="section__data" data-location>Brooklyn, NY 10001</p>
+          </section>
+          <section id="section-timezone" class="result-section divider">
+            <h2 class="section__title">Timezone</h2>
+            <p class="section__data" data-timezone>UTC -05:00</p>
+          </section>
+          <section id="section-isp" class="result-section divider">
+            <h2 class="section__title">ISP</h2>
+            <p class="section__data" data-isp>SpaceX Starlink</p>
+          </section>
+        </div>
+      </div>
+      <div id="map" style="position: absolute"></div>
+    </main>
+
+    <footer>
+      <p class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded with <i class="fa-solid fa-heart"></i> by
+        <a href="https://github.com/LucasWeidas" target="_blank">Lucas Weidas</a>.
+      </p>
+    </footer>
+  </body>
+</html>
