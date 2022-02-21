@@ -17,7 +17,7 @@ Thanks for checking out this front-end coding challenge solution.
 
 This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-### Screenshot
+### Preview Screenshot
 
 ![Preview for the IP address tracker](./preview/desktop-preview.jpg)
 
