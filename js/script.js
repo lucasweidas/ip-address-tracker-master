@@ -16,8 +16,8 @@
     iconSize: [46, 56],
   });
 
-  getSearchData('');
-  async function getSearchData(searchValue) {
+  getSearchData();
+  async function getSearchData(searchValue = ' ') {
     try {
       const response = await fetch(
         `https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a&ipAddress=${searchValue}&domain=${searchValue}`
