@@ -18,8 +18,9 @@
 
   async function getSearchData(searchValue = '') {
     try {
-      const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a&ipAddress=${searchValue}`);
-      // &domain=${searchValue}
+      const response = await fetch(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_iIEzyWkBYiGggnoJveB8gplWM201a&ipAddress=${searchValue}&domain=${searchValue}`
+      );
       const data = await response.json();
 
       form.classList.remove('invalid');
@@ -76,5 +77,5 @@
     infosButton.title = 'hide informations';
   });
 
-  getSearchData();
+  // getSearchData();
 })();
