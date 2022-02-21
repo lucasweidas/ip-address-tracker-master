@@ -16,7 +16,6 @@
     iconSize: [46, 56],
   });
 
-  getSearchData();
   async function getSearchData(searchValue = ' ') {
     try {
       const response = await fetch(
@@ -77,4 +76,6 @@
     }
     infosButton.title = 'hide informations';
   });
+
+  getSearchData();
 })();
