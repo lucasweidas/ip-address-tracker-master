@@ -39,7 +39,7 @@
 
   function setInformations(data) {
     ipAddressElement.innerText = data.ip;
-    locationElement.innerText = `${data.location.region}, ${data.location.country}`;
+    locationElement.innerText = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
     timezoneElement.innerText = `UTC ${data.location.timezone}`;
     ispElement.innerText = data.isp;
   }
